@@ -1,0 +1,51 @@
+name: 한국 주식 포트 검수 자동화 실행
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # ✅ 수동 실행 가능
+
+jobs:
+  run_checker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 체크포인트 다운로드 (이전 실행에서 저장된 파일 불러오기)
+        continue-on-error: true  # ✅ 체크포인트가 없더라도 계속 실행
+        uses: actions/download-artifact@v4
+        with:
+          name: checkpoint
+          path: ./
+
+      - name: 체크포인트 로드 (이전 실행 값 불러오기)
+        run: |
+          if [ -f checkpoint.json ]; then
+            echo "LAST_PROCESSED_INDEX=$(cat checkpoint.json)" >> $GITHUB_ENV
+          else
+            echo "LAST_PROCESSED_INDEX=0" >> $GITHUB_ENV
+          fi
+
+      - name: 스크립트 실행
+        run: python main.py
+
+      - name: 체크포인트 저장 (현재 실행에서 저장된 파일)
+        run: echo "$LAST_PROCESSED_INDEX" > checkpoint.json
+
+      - name: 체크포인트 업로드 (다음 실행에서 계속하기 위해 저장)
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint
+          path: checkpoint.json
+

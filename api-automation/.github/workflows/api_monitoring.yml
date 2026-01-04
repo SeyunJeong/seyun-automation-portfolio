@@ -1,0 +1,77 @@
+name: API Health Monitor
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # 30분마다
+    - cron: '0 0 * * *'     # 매일 9시 리포트
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Python 설정
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+    
+    - name: 의존성 설치
+      run: |
+        pip install -r requirements.txt
+    
+    - name: config.json 생성
+      env:
+        GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run: |
+        mkdir -p config
+        echo "🔍 환경변수 확인:"
+        echo "SLACK_WEBHOOK_URL 앞 30자: ${SLACK_WEBHOOK_URL:0:30}..."
+        
+        cat > config/config.json << EOF
+        {
+          "environments": {
+            "dev": {
+              "fast1_base_url": "https://fast1-dev.example.com",
+              "fast2_base_url": "https://fast2-dev.example.com",
+              "google_refresh_token": "${GOOGLE_REFRESH_TOKEN}",
+              "slack_webhook_url": "${SLACK_WEBHOOK_URL}"
+
+            }
+          }
+        }
+        EOF
+        
+        echo "📄 생성된 config.json 확인:"
+        cat config/config.json
+
+    - name: 이전 결과 데이터 다운로드
+      uses: actions/download-artifact@v4
+      with:
+        name: api-health-data
+        path: ./data
+      continue-on-error: true
+    
+    - name: API 헬스 체크 실행
+      env:
+        ENVIRONMENT: dev
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
+      run: |
+        python github_health_monitor.py
+    
+    - name: 결과 데이터 업로드
+      uses: actions/upload-artifact@v4
+      with:
+        name: api-health-data
+        path: ./data
+        retention-days: 30
+    
+    - name: 일일 리포트 생성 (매일 9시에만)
+      if: github.event.schedule == '0 9 * * *'
+      env:
+        ENVIRONMENT: live
+      run: |
+        python generate_daily_report.py

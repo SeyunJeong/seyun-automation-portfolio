@@ -1,0 +1,22 @@
+{
+  "environments": {
+    "dev": {
+      "fastapi1_base_url": "https://api-dev.example.com",
+      "fastapi2_base_url": "https://api2-dev.example.com",
+      "google_refresh_token": "your-google-refresh-token-here",
+      "slack_webhook_url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    },
+    "staging": {
+      "fastapi1_base_url": "https://api-staging.example.com",
+      "fastapi2_base_url": "https://api2-staging.example.com",
+      "google_refresh_token": "your-google-refresh-token-here",
+      "slack_webhook_url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    },
+    "live": {
+      "fastapi1_base_url": "https://api.example.com",
+      "fastapi2_base_url": "https://api2.example.com",
+      "google_refresh_token": "your-google-refresh-token-here",
+      "slack_webhook_url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    }
+  }
+}

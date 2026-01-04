@@ -1,0 +1,4 @@
+# .gitattributes 파일 생성 (VS Code에서 직접 생성 가능)
+* -text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
