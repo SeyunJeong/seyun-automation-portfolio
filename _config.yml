@@ -1,0 +1,10 @@
+title: QA Automation Portfolio
+description: QA 엔지니어로서 다양한 자동화 테스트 및 모니터링 시스템을 구축한 포트폴리오
+theme: jekyll-theme-cayman
+show_downloads: false
+
+author:
+  name: Seyun Jeong
+
+github:
+  repository_url: https://github.com/SeyunJeong/seyun-automation-portfolio
