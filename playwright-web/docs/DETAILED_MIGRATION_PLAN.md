@@ -87,23 +87,23 @@ DOWNLOAD_DIR=downloads
 # ============================================
 # Live 환경 설정
 # ============================================
-LIVE_BASE_URL=https://service.quantus.kr/ko
-LIVE_TEST_NICKNAME=퀀터스관리자계정
+LIVE_BASE_URL=https://service.example.com/ko
+LIVE_TEST_NICKNAME=TestAdminAccount
 LIVE_STOCK_ACCOUNT=자동화테스트주식계좌
 LIVE_COIN_ACCOUNT=자동화테스트코인계좌
-LIVE_STOCK_STRATEGY_ALL_WEATHER=퀀터스 글로벌 올웨더 액티브
-LIVE_STOCK_STRATEGY_LONG_SHORT=퀀터스 지수 롱숏 액티브
+LIVE_STOCK_STRATEGY_ALL_WEATHER=Global All Weather Active Strategy
+LIVE_STOCK_STRATEGY_LONG_SHORT=Index Long Short Active Strategy
 LIVE_COIN_STRATEGY_ALL_WEATHER=크립토 올웨더 액티브 전략
 
 # ============================================
 # Staging 환경 설정
 # ============================================
-STAGING_BASE_URL=https://dev.quantus.kr/ko
+STAGING_BASE_URL=https://dev.example.com/ko
 STAGING_TEST_NICKNAME=안녕하세요
 STAGING_STOCK_ACCOUNT=qa자동화테스트주식계좌
 STAGING_COIN_ACCOUNT=qa자동화테스트코인계좌
-STAGING_STOCK_STRATEGY_ALL_WEATHER=퀀터스 글로벌 올웨더 액티브
-STAGING_STOCK_STRATEGY_LONG_SHORT=퀀터스 지수 롱숏 액티브
+STAGING_STOCK_STRATEGY_ALL_WEATHER=Global All Weather Active Strategy
+STAGING_STOCK_STRATEGY_LONG_SHORT=Index Long Short Active Strategy
 STAGING_COIN_STRATEGY_ALL_WEATHER=크립토 올웨더 액티브 전략
 
 # ============================================

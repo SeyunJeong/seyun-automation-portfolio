@@ -1,6 +1,6 @@
-# Quantus 웹 자동화 테스트
+# Service 웹 자동화 테스트
 
-본 프로젝트는 Quantus 웹사이트에 대한 자동화 테스트 프레임워크입니다. Playwright를 사용하여 웹 테스트를 자동화하고, 페이지 객체 모델(POM) 패턴을 통해 유지보수성과 재사용성을 높였습니다.
+본 프로젝트는 Service 웹사이트에 대한 자동화 테스트 프레임워크입니다. Playwright를 사용하여 웹 테스트를 자동화하고, 페이지 객체 모델(POM) 패턴을 통해 유지보수성과 재사용성을 높였습니다.
 
 ## 목차
 1. [환경 설정 방법](#환경-설정-방법)
@@ -27,16 +27,16 @@ ENVIRONMENT = "live"  # "live" 또는 "dev"로 설정
 ```python
 # 라이브 환경 설정 예시
 LIVE = {
-    "base_url": "https://www.quantus.kr/",
+    "base_url": "https://www.example.com/",
     "accounts": {
-        "test_account": "퀀터스관리자계정",
+        "test_account": "TestAdminAccount",
     },
     # 기타 설정값...
 }
 
 # 개발 환경 설정 예시
 DEV = {
-    "base_url": "https://dev.quantus.kr/",
+    "base_url": "https://dev.example.com/",
     "accounts": {
         "test_account": "dev자동화테스트계정",
     },
@@ -80,13 +80,13 @@ page.locator(f'text="{get_test_account()}"')
 pytest
 
 # 특정 테스트 파일만 실행
-pytest test_QuantusUser.py
+pytest test_ServiceUser.py
 
 # 특정 테스트 함수만 실행
-pytest test_QuantusUser.py::test_check_login_status
+pytest test_ServiceUser.py::test_check_login_status
 
 # 특정 클래스의 테스트만 실행
-pytest test_QuantusUser.py::TestStockFactorStrategy
+pytest test_ServiceUser.py::TestStockFactorStrategy
 ```
 
 ## 페이지 객체 모델(POM) 구조

@@ -23,7 +23,7 @@ class HomePage(BasePage):
         return self
         
     def is_logged_in(self) -> bool:
-        nickname_count = self.page.get_by_text("퀀터스관리자계정").count()
+        nickname_count = self.page.get_by_text("TestAdminAccount").count()
         print(f"'{nickname_count}'개의 닉네임 요소를 찾았습니다.")
         return nickname_count > 0
     

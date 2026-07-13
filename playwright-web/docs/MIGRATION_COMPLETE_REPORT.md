@@ -95,15 +95,15 @@ class StagingSettings(BaseSettings):
 
 **Live 환경**:
 ```
-URL: https://service.quantus.kr/ko
-Nickname: 퀀터스관리자계정
+URL: https://service.example.com/ko
+Nickname: TestAdminAccount
 Stock Account: 자동화테스트주식계좌
 Environment: live
 ```
 
 **Staging 환경**:
 ```
-URL: https://dev.quantus.kr/ko
+URL: https://dev.example.com/ko
 Nickname: 안녕하세요
 Stock Account: qa자동화테스트주식계좌
 Environment: staging

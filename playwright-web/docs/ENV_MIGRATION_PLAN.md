@@ -10,14 +10,14 @@ playwright-web 프로젝트 내부의 하드코딩된 값들을 환경변수로 
 #### 1.1 `config/config.py`
 - **ENVIRONMENT**: `"live"` (하드코딩)
 - **LIVE 환경 설정**:
-  - `base_url`: `"https://service.quantus.kr/ko"`
-  - `nickname.test_nickname`: `"퀀터스관리자계정"`
+  - `base_url`: `"https://service.example.com/ko"`
+  - `nickname.test_nickname`: `"TestAdminAccount"`
   - `stock_accounts.test_account`: `"자동화테스트주식계좌"`
   - `coin_accounts.test_account`: `"자동화테스트코인계좌"`
   - `stock_strategies`: 전략명들
   - `coin_strategies`: 전략명들
 - **STAGING 환경 설정**:
-  - `base_url`: `"https://dev.quantus.kr/ko"`
+  - `base_url`: `"https://dev.example.com/ko"`
   - `nickname.test_nickname`: `"안녕하세요"`
   - `stock_accounts.test_account`: `"qa자동화테스트주식계좌"`
   - `coin_accounts.test_account`: `"qa자동화테스트코인계좌"`
@@ -40,7 +40,7 @@ playwright-web 프로젝트 내부의 하드코딩된 값들을 환경변수로 
 - **SLACK_WEBHOOK_URL**: `"https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"` (하드코딩)
 
 #### 1.5 `src/pages/home_page.py`
-- **하드코딩된 닉네임**: `"퀀터스관리자계정"` (26번째 줄)
+- **하드코딩된 닉네임**: `"TestAdminAccount"` (26번째 줄)
 
 #### 1.6 `src/utils/test_utils.py`
 - **TEST_DATA**: 테스트 데이터 딕셔너리 (투자금액, 종목수, 날짜, 파라미터 등)
@@ -71,21 +71,21 @@ DOWNLOAD_DIR=downloads
 # 환경별 설정 (ENVIRONMENT 값에 따라 분기)
 # ============================================
 # Live 환경
-LIVE_BASE_URL=https://service.quantus.kr/ko
-LIVE_TEST_NICKNAME=퀀터스관리자계정
+LIVE_BASE_URL=https://service.example.com/ko
+LIVE_TEST_NICKNAME=TestAdminAccount
 LIVE_STOCK_ACCOUNT=자동화테스트주식계좌
 LIVE_COIN_ACCOUNT=자동화테스트코인계좌
-LIVE_STOCK_STRATEGY_ALL_WEATHER=퀀터스 글로벌 올웨더 액티브
-LIVE_STOCK_STRATEGY_LONG_SHORT=퀀터스 지수 롱숏 액티브
+LIVE_STOCK_STRATEGY_ALL_WEATHER=Global All Weather Active Strategy
+LIVE_STOCK_STRATEGY_LONG_SHORT=Index Long Short Active Strategy
 LIVE_COIN_STRATEGY_ALL_WEATHER=크립토 올웨더 액티브 전략
 
 # Staging 환경
-STAGING_BASE_URL=https://dev.quantus.kr/ko
+STAGING_BASE_URL=https://dev.example.com/ko
 STAGING_TEST_NICKNAME=안녕하세요
 STAGING_STOCK_ACCOUNT=qa자동화테스트주식계좌
 STAGING_COIN_ACCOUNT=qa자동화테스트코인계좌
-STAGING_STOCK_STRATEGY_ALL_WEATHER=퀀터스 글로벌 올웨더 액티브
-STAGING_STOCK_STRATEGY_LONG_SHORT=퀀터스 지수 롱숏 액티브
+STAGING_STOCK_STRATEGY_ALL_WEATHER=Global All Weather Active Strategy
+STAGING_STOCK_STRATEGY_LONG_SHORT=Index Long Short Active Strategy
 STAGING_COIN_STRATEGY_ALL_WEATHER=크립토 올웨더 액티브 전략
 
 # ============================================
